@@ -1,0 +1,255 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz-cd}
+\usepackage{amssymb}
+
+\setlength{\parindent}{0pt}
+
+\title{test}
+\date{May 2025}
+
+\begin{document}
+
+Lemma 1: if $\phi : X \rightarrow Y$ is a measurable function between measure spaces, $\mu$ is a measure on $X$ and $f$ is positive \& measurable then $$\int_X f(\phi(x)) \ d\mu = \int_Y f(y) \ d(\phi_*\mu)$$ where $(\phi_*\mu)(E) = \mu(\phi^{-1}(E))$ is the pushforward measure on $Y$.
+
+Proof: easy for simple functions and then apply monotone convergence
+
+\vspace{0.5cm}
+
+\textbf{Exercise 1.2}
+
+\vspace{0.5cm}
+
+Let $s_n \in \mathbb R$ be an increasing sequence $s_0 \leq s_1 \leq ...$, and $s_n \rightarrow \infty$ with 
+$$|s_{n+1}-s_n| \rightarrow 0$$ 
+For example $s_n = \sum\limits_{k = 1}^n \frac{1}{k}$. Let $A = \{s_0,s_1,.. \}$ and $B = \mathbb Z$, then if $x \in \mathbb R$ and $\epsilon > 0$ then let $M$ be such that $|s_{k+1} - s_k| < \epsilon$ for all $k \geq M$ and let $N$ be large enough so that $x+N \geq s_M$, then $s_{k} \leq x+N \leq s_{k+1}$ for some $k \geq M$ and thus since $s_k -N \in A + B$ and $|x - (s_k -N) | =|x + N - s_k| < \epsilon$ we proved $A+B$ is dense in $\mathbb R$.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 1.3}
+
+\vspace{0.5cm}
+
+$G = KK^{-1}$ since if $g \in G$ then let $y \in gK \cap K$ so $y = gk = k'$ for some $k,k' \in K$ and $g = k'k^{-1}$ and $G \subseteq KK^{-1}$.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 1.4}
+
+\vspace{0.5cm}
+
+Lemma 1.4.2 in the text says $x \rightarrow L_x1_S$ is continuous $G \rightarrow L^2(G)$. Hence there is some open set $U$ containing $y$ such that $||L_x1_S - L_y1_S||_2 < \epsilon/\sqrt{\mu(S)}$. Then  $$|\mu(S\cap xS) - \mu(S\cap yS)| = |(1_S, L_x1_S-L_y1_S)| \leq \sqrt{\mu(S)}||L_x 1_S - L_y 1_S||_2 < \epsilon$$ for all $x \in U$ so $\mu(S\cap xS)$ is continuous at $y$.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 1.6}
+
+\vspace{0.5cm}
+
+For a compactly supported $f$ we have that $\psi:G \rightarrow \mathbb R$ given by $g \mapsto \int f(gx) \ d \mu(x)$ is a continuous function (same proof as Lemma 1.3.11), it is a constant function on the dense subspace $H$ by lemma 1 since the pushforward measure along $x \mapsto hx$ is given by $\mu(h^{-1}E)$ and this equals $ \mu(E)$ by assumption. This means $\psi$ constant on the entire space by this lemma: if $f,g : X \rightarrow Y$ agree on the dense subspace $A \subseteq X$ and if $Y$ is Hausdorff then $f = g$. So since $\mathbb R$ is Hausdorff we arrive at $\int f(gx) d \mu(x) = \int f(x) d\mu(x)$ for all $g \in G$.
+
+Now fix $g \in G$, note that $\nu(E) := \mu(g^{-1}E)$ is still a Radon measure since $x \rightarrow g^{-1}x$ is a homeomorphism. Let's rephrase what we concluded in the last paragraph:
+$$\int f \ d\nu = \int f \ d\mu$$ for two Radon measures $\nu \ \& \  \mu$ on the locally compact topological space $X$ and for all compactly supported $f \in C_c(X)$. For all Radon measures on LCH X we know in general that $$\mu(U) = \sup\limits_{f \prec U} \int f \ d\mu$$ for all open $U$ which would imply that 
+$$\mu(U) = \sup\limits_{f \prec U} \int f \ d\mu = \sup\limits_{f \prec U} \int f \ d\nu = \nu(U)$$
+
+and by $\pi-\lambda$ theorem, $\mu = \nu$ on Borel sets.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 1.8}
+
+\vspace{0.5cm}
+
+Let $d \mu = \frac{1}{|y|} dx \ dy$. The measure is finite on compact sets in $G$ since if we have compact $K \subseteq \mathbb R^2 - \mathbb R \times  \{ 0\}$ (y = 0 line removed) then it has to be separated by a positive distance $r > 0$ from $y = 0$ line, $|y| > r $ for all $(x,y) \in K$, obviously $K$ has to be bounded above in the $y-$coordinate aswell like so $|y| \leq r'$ for all $(x,y) \in K$ and in the x-coordinate too $|x| \leq B$ for all $(x,y) \in K$. This gives us the estimate $$\mu(K) = \int \int 1_K(x,y)/|y| \  dx \ dy \leq  2 \int\limits_{r}^{r'} \int\limits_{-B}^B 1/|y| \  dx \ dy = ln(r'/r)(2B) < \infty$$
+\vspace{0.3cm}
+This lets us define $I(f)$ as a finite quantity for all compactly supported $f$ with $|I(f)| \leq \mu(K) ||f||_{\infty}$
+
+\vspace{0.3cm}
+
+Let $h = \begin{bmatrix} 1 & r \\ 0 & s \end{bmatrix}$ and $g = \begin{bmatrix} 1 & x \\ 0 & y \end{bmatrix}$. Then $hg = \begin{bmatrix} 1 & x +ry \\ 0 & ys \end{bmatrix}$ and 
+
+$$I(L_{h^{}-1} f ) = \int f(hg) \ d \mu(g) = \int f(\begin{bmatrix} 1 & x +ry \\ 0 & ys \end{bmatrix}) \frac{1}{|y|} \ dx \ dy$$ $$ =\int f(\begin{bmatrix} 1 & x' \\ 0 & y' \end{bmatrix}) \frac{1}{|y'|} \ dx' \ dy' = I(f)$$
+
+by changing variables $x +rs = x'$, $dx = dx'$ and $ys = y'$, $|s| dy = dy'$ so $I$ is a left invariant Haar integral. This doesn't quite show that $\mu$ is our Haar measure but we can show that $\mu$ is a left invariant measure by setting $f = 1_E$ and doing the same change of variables sequence to end up at $\mu(xE) = \mu(E)$. $\mu$ is Radon by theorem 7.8 in Folland's real analysis so then $\mu$ is indeed our Haar measure. I allowed myself to use Follands result since the exercise didnt ask to prove $\mu$ was a Haar measure but just asked to prove that $\int f d\mu$ was a Haar integral, which I did on my own.
+
+\vspace{0.3cm}
+
+The change of variables formula for multiplcation on the right by $h$ we will use to compute $\Delta$ is 
+$$\frac{1}{\Delta(h)} \int f(g) \ d \mu(g)  = \int f(gh) \ d \mu(g)$$
+so let $f \in C_c(G)$, $f \geq 0$ and $f\neq 0$ so that $\int f \ d\mu > 0$. Again let $h = \begin{bmatrix} 1 & r \\ 0 & s \end{bmatrix}$ and $g = \begin{bmatrix} 1 & x \\ 0 & y \end{bmatrix}$, then $gh = \begin{bmatrix} 1 & r + xs \\ 0 & ys \end{bmatrix}$ and 
+\begin{align*}
+\int f(gh)\,d\mu(g)
+&= \int f\!\begin{pmatrix} 1 & r + xs \\ 0 & ys \end{pmatrix}\!/|y| \; dx\,dy \\[0.3em]
+&= \frac{1}{|s|}\int f\!\begin{pmatrix} 1 & r + x' \\ 0 & y' \end{pmatrix}/|y|\; dx'\,dy' \\[0.3em]
+&= \frac{1}{|s|}\int f\!\begin{pmatrix} 1 & x'' \\ 0 & y' \end{pmatrix}/|y|\; dx''\,dy' \\[0.3em]
+&= \frac{1}{|s|}\int f(g)\,d\mu(g).
+\end{align*}
+
+
+$$sx = x', ys = y', dx = \frac{1}{|s|} dx', dy = \frac{1}{|s|} dy' \text{ and then } x'' = r+x', dx'' = dx'$$ 
+
+Which gives us $\Delta(h) = |s|$.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 1.10}
+
+\vspace{0.5cm}
+
+(a) Define for $f \in C_c(G)$, $J(f) = I(\chi f)$ where $I$ is the Haar integral. Then 
+$$J(L_gf) = I(\chi L_g f) = I(L_g((L_{g^{-1}}\chi) f)) $$
+$$= I((L_{g^{-1}}\chi) f) = \chi(g) I(\chi f) = \chi(g) J(f)$$
+since $L_{g^{-1}}\chi = \chi(g)\chi$. Then if $\nu$ is the measure that is represented by $J$ and $U \subseteq G$ is open
+
+$$\nu(gU) = \sup\limits_{f \prec gU} J(f), \text{ by the very construction of } \nu$$
+and since $f' \longleftrightarrow L_g f'$ gives a bijection between the set of all $f' \prec U$ and all $f \prec gU$ we get
+$$\nu(gU) =\sup\limits_{f \prec gU} J(f) = \sup\limits_{f' \prec U}J(L_gf') = \chi(g) \sup\limits_{f' \prec U}J(f') = \chi(g) \nu(U)$$
+then the two measures given by 
+$$E \mapsto \chi(g)\nu(E)$$ 
+$$\text{and}$$ 
+$$E \mapsto \nu(gE)$$ 
+agree on the open sets and by $\pi-\lambda$ theorem agree on all Borel sets.
+\vspace{0.3cm}
+
+(b) If there is a measure $\nu$ on $G/H$ with $\nu(gE) = \chi(g) \nu(E)$ for all Borel $E \subseteq G/H$ then we have the formula which follows from Lemma 1: $$\chi(g) \int_{G/H} \phi(gx) \ d\nu(x) = \int_{G/H} \phi(x) \ d\nu(x)$$ for all $\phi \in L^1(\nu)$
+Then following the proof of 1.5.3 just with an extra factor of $\chi$ tagging along we define for $f \in C_c(G)$
+$$I(f) = \int_{G/H} (\chi^{-1} f)^H(x) \ d\nu = \int_{G/H} \int_H \frac{1}{\chi(xh)} f(xh) \ d\mu_H(h) d\nu(x)$$ 
+
+Then 
+\begin{align*}
+I(L_{g^{-1}}f)
+&= \int_{G/H} (\chi^{-1} L_{g^{-1}}f)^H(x)\,d\nu
+   = \int_{G/H}\int_H \frac{1}{\chi(xh)} f(gxh)\,d\mu_H\,d\nu \\[0.3em]
+&= \chi(g)\int_{G/H}\int_H \frac{1}{\chi(gxh)} f(gxh)\,d\mu_H\,d\nu \\[0.3em]
+&= \chi(g)\int_{G/H} (\chi^{-1}f)^H(gx)\,d\nu(x)\\[0.3em]
+&= \int_{G/H} (\chi^{-1}f)^H(x)\,d\nu \\[0.3em]
+&= I(f).
+\end{align*}
+
+so that $I(f)$ is a Haar integral and so there is a Haar measure $\mu_G$ on $G$ with 
+$$I(f) = \int_G f(x) d \mu_G =  \int_{G/H} \int_H \frac{1}{\chi(xh)}f(xh) d\mu_H d\nu$$
+now let $f \neq 0$ and $f \geq 0$ with compact support so that $I(f) \neq 0$
+
+\begin{align*}
+\Delta_G(h_0)^{-1} I(f)
+&= \int_G R_{h_0}(f)(x)\, d\mu_G \\[0.3em]
+&= \int_{G/H} \int_H \frac{1}{\chi(xh)} (R_{h_0}f)(xh)\, d\mu_H \, d\nu \\[0.3em]
+&= \int_{G/H} \int_H \frac{1}{\chi(xh)} f(xhh_0)\, d\mu_H \, d\nu \\[0.3em]
+&= \chi(h_0) \int_{G/H} \int_H \frac{1}{\chi(xhh_0)} f(xhh_0)\, d\mu_H \, d\nu \\[0.3em]
+&= \Delta_H(h_0)^{-1}\chi(h_0)
+   \int_{G/H} \int_H \frac{1}{\chi(xh)} f(xh)\, d\mu_H \, d\nu \\[0.3em]
+&= \Delta_H(h_0)^{-1}\chi(h_0)\, I(f).
+\end{align*}
+
+
+and we arrive at $\Delta_H(h_0) = \Delta_G(h_0)\chi(h_0)$. 
+
+Next assume that $\Delta_H(h_0) = \Delta_G(h_0)\chi(h_0)$ and we wanna prove there is a $\chi-$ invariant measure $\nu$ on $G/H$. We again follow the proof in the text just with an extra $\chi$ to keep us company. First we prove that if 
+$$T: C_c(G) \rightarrow C_c(G/H):f \rightarrow (\chi^{-1}f)^H$$ 
+then $\text{ker}(T) \subseteq \text{ker}(I)$ where $I$ is the Haar integral on $G$, this would imply the existence of an operator $J$ fitting into this diagram
+
+\vspace{0.3cm}
+
+\begin{center}
+\begin{tikzcd}
+C_c(G) \arrow[r, "T"] \arrow[rd, "I"'] & C_c(G/H) \arrow[d, "J?", dashed] \\
+                                       & \mathbb R                       
+\end{tikzcd}
+\end{center}
+
+
+\vspace{0.3cm}
+
+so assume $Tf = (\chi^{-1}f)^H = 0$, then let $\phi \in C_c(G)$
+
+\begin{align*}
+0 = \int_G \phi(x)\,(\chi^{-1}f)^H(x)\,dx 
+  & = \int_G \int_H \phi(x)\,\frac{1}{\chi(xh)}\,f(xh)\,dh\,dx \\[0.3em]
+  &= \int_G \int_H \Delta_G(h)^{-1}\,\phi(xh^{-1})\,\frac{1}{\chi(x)}\,f(x)\,dh\,dx \\[0.3em]
+  &= \int_G \int_H \chi(h)\,\Delta_H(h)^{-1}\,\phi(xh^{-1})\,\frac{1}{\chi(x)}\,f(x)\,dh\,dx \\[0.3em]
+  &= \int_G \int_H \chi(h^{-1})\,\phi(xh)\,\frac{1}{\chi(x)}\,f(x)\,dh\,dx \\[0.3em]
+  &= \int_G f(x)\,\Big(\int_H \frac{1}{\chi(xh)}\phi(xh)\,dh\Big)\,dx \\[0.3em]
+  &= \int_G f(x)\,(T\phi)(x)\,dx.
+\end{align*}
+
+since $\phi \mapsto\chi^{-1}\phi$, $C_c(G) \rightarrow C_c(G)$ is surjective (inverse is given by $\phi \rightarrow \chi \phi$) and $\phi \mapsto \phi^H$ is surjective according to Lemma 1.5.1 and since $T$ is the composition of these two operators then T is surjective aswell, then if $\psi \in C_c(G)$ with $\psi = 1$ on the support of $f$ pick $\phi$ so that $T\phi = \psi$ and then $\int_G f(x) \ dx = 0$ and $f \in \text{ker}(I)$ which we wanted to prove, $J$ is also unique as follows from surjectivity of $T$. All that is left to prove is that $J(L_gh) = \chi(g)J(h)$ for all $h \in C_c(G/H)$.
+There is some $f \in C_c(G)$ with $(\chi^{-1}f)^H = h$ and $I(f) = J(h)$ by definition of $J$. Then we compute 
+$$L_gh = L_g((\chi^{-1}f)^H) = (L_g(\chi^{-1})L_g(f))^H = \chi(g) (\chi^{-1}L_gf)^H = \chi(g) T(L_gf)$$
+so then 
+$$J(L_gh) = \chi(g) J(T(L_gf)) = \chi(g) I(L_gf) = \chi(g) I(f) = \chi(g) J(h)$$
+and if $\nu$ is the measure that is represented by $J$ and $U$ is open
+
+$$\nu(gU) = \sup\limits_{f \prec gU} J(f), \text{ by the very definition of } \nu$$
+and since $f \longleftrightarrow L_g f$ gives a bijection between the set of all $f \prec U$ and all $f' \prec gU$ we get
+$$\nu(gU) =\sup\limits_{f \prec gU} J(f) = \sup\limits_{f' \prec U}J(L_gf') = \chi(g) \sup\limits_{f' \prec U}J(f') = \chi(g) \nu(U)$$
+then the two measures given by $$E \mapsto \chi(g)\nu(E)$$ and $$E \mapsto \nu(gE)$$ agree on the open sets and by $\pi-\lambda$ theorem agree on all Borel sets.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 1.11}
+
+\vspace{0.5cm}
+
+(a) First verify the group axioms, then verify multiplication is continuous so its a topological group. Its locally compact since finite product of locally compact spaces are locally compact if $U$ and $V$ are compact neighborhoods of $g$ and $h$ in $G$ and $H$ then $U \times V$ is compact neighborhood of $(g,h) \in G \times H$.
+
+\vspace{0.3cm}
+
+(b) Define $\nu(E) = \mu({}^gE)$, then $$\nu(xE) = \mu({}^g(xE)) = \mu({}^gx {}^gE) = \mu(^gE) = \nu(E)$$ so $\nu$ is left invariant. $x \rightarrow {}^gx$ is a homeomorphism so $\nu$ is Radon aswell. Its also nonzero since $\nu(U) = \mu(^gU) > 0$ since ${}^gU$ is open so its a Haar measure and by uniqueness of Haar measures up to a nonzero multiple there is some nonzero $\delta(g)$ with $\mu(^gE) = \delta(g)\mu(E)$ for all Borel $E$.
+
+Now prove $\delta$ is a homomorphism. Let $K$ be a compact set with nonempty interior (K exists by local compactness), then $0 <\mu(K) < \infty$ and 
+$$\delta(g)\delta(h) \mu(K) = \delta(g) \mu(^hK) = \mu(^g(^hK)) = \mu(^{gh}K) = \delta(gh) \mu(K)$$ 
+and we divide by $\mu(K)$ to get $\delta(g)\delta(h) = \delta(gh)$.
+
+\vspace{0.3cm}
+
+(c) There is an error in the exercise, the correct formula is actually $$ \int f(^gx) \ d \mu_H(x) = \frac{1}{\delta(g)} \int f(x) \ d\mu_H(x)$$ as I explain in one of the following paragraphs when I prove it
+
+\vspace{0.3cm}
+
+First we state the fact (to be proved later) that if we define $f^g(x) := f({}^gx)$ then $f^g \rightarrow f$ uniformly as $g \rightarrow 1_G$, meaning that 
+$$\forall \epsilon > 0\exists \text{ nbhd. } V \subseteq G \text{ with } 1_G \in V \text{ and } \sup\limits_{x \in H}|f({}^gx)-f(x)| < \epsilon \text{ for all } g \in V$$ 
+We can assume some further properties of $V$ aswell: (1) since $G$ is locally compact we can assume $V$ is compact too and also always contained in the fixed compact neighborhood $V'$ because intersecting a neighborhood $U$ with $V'$ you get again a neighborhood and (2) V can always be picked to be symmetric ($V = V^{-1}$) because symmetrization $U \cap U^{-1}$ produces a symmetric nbhd. 
+
+Let $K$ be the compact support of $f \geq 0$, $f \neq 0$ and note that $\text{supp}(f^g)) \subseteq {}^{V^{-1}}K = {}^VK$ for all $g \in V$ where ${}^VK := \{{}^gx \in H \ | \ x \in K \text{ and } g \in V \}$. 
+
+Let $\epsilon' > 0$, we want to find a neighborhood $V$ of $1_G$ so that $|1 - \delta(g)| < \epsilon'$ for all $g$. Pick $V$ to be the neighborhood described above corresponding to $\epsilon =\frac{\epsilon' I}{2 \ \mu_H({}^{V'}K)}$ where $I = \int f \ d \mu_H > 0$. Now to our estimates we can make
+$$ I|\delta(g) - 1| = |\int f({}^gx) - f(x) \ d \mu_H(x) | = |\int_{{}^VK}  ...| \leq \int_{{}^VK} |f({}^gx) - f(x)| \ d \mu_H(x)$$ 
+$$ \leq \mu_H({}^VK) \epsilon = \frac{\mu_H({}^VK) \epsilon' I}{2\mu_H({}^{V'}K)} < \epsilon' I$$ 
+
+where $\frac{\mu_H({}^VK)}{\mu_H({}^{V'}K)} \leq 1 \longleftrightarrow  \mu_H({}^VK) \leq \mu_H({}^{V'}K)$ since $V$ is contained in $V'$
+
+We arrive at $|\delta(g) - 1| < \epsilon'$ for all $g \in V$ and so $\delta$ is continuous at $1_G$ which means its continuous everywhere since its a group homomorphism.
+
+\vspace{0.3cm}
+
+Lets now prove that $f^g \rightarrow f$ uniformly as $g \rightarrow 1_G$ if $f$ is compactly supported on $H$. Let $K = \text{supp}(f)$ and fix some compact unit nbhd. $V' \subseteq G$, then ${}^{V'}K$ is compact since its the image in $H$ of the compact set $V' \times K$ under $(g,x) \mapsto {}^g x$. $f$ is uniformly continuous by some lemma in the text so there is some open unit nbhd. $U \subseteq H$ with $|f(x) - f(y)| < \epsilon$ whenever $xy^{-1} \in U$. Let's consider the map $\phi : G \times H \rightarrow H$ given by $(g,h) \mapsto {}^ghh^{-1}$. Then we see that $(1_G,h) \in \phi^{-1}(U)$ for all $h$ since ${}^{1_G}h h^{-1} = 1_H \in U$, so then for each $h$ there is some open rectangle like this $(1_G, h) \in V_h \times U_h \subseteq \phi^{-1}(U)$. Since $h \in U_h$ for all $h \in H$ then  $U_h$ cover $H$ and there is a finite subcover $\{U_{h_1}, ..., U_{h_n} \}$ of ${}^VK$. Call $V_i = V_{h_i}$ and $U_i = U_{h_i}$ and define $\tilde V = (\bigcap\limits_{i = 1}^n V_i) \cap V'$ and $V = \tilde V \cap \tilde V^{-1}$, this $V$ is our desired unit neighborhood for uniform convergence. 
+
+So lets verify that $$\forall g \in V \ \forall x \in H:|f(^gx) - f(x)| < \epsilon$$ There are two cases: $x \in {}^VK$ and $x \not \in {}^VK$:
+
+\vspace{0.3cm}
+
+(i) $x \in {}^VK$ implies $x \in U_i$ for some $i$ since $U_i$ is an open cover of ${}^VK$. Since $V \subseteq V_i$, $g \in V_i$ and by definition of the $V_h$ and $U_h$ we get ${}^gxx^{-1} \in U$ which implies that $$|f({}^gx) - f(x) | < \epsilon$$
+
+\vspace{0.3cm}
+
+(ii) If $x \not \in {}^VK$ then whenever $g \in V$ we get ${}^gx \not \in K$ since if ${}^gx \in K$ it would imply $x \in {}^{g^{-1}}K \subseteq {}^{V^{}-1}K = {}^VK$, i.e $x \in {}^VK$ which we assumed wasn't true. So we showed that ${}^gx$ is not in $K = \text{supp}(f)$ for any $g \in V$ and finally we get $f(^{g}x) = 0$ with the special case of $g = 1_G \in V$ giving us $f(x) = 0$ aswell so that 
+$$|f(^gx) - f(x)| = 0 < \epsilon$$
+and the proof of uniform convergence is complete.
+
+\vspace{0.3cm}
+
+Now let's prove the change of variables formula. Lemma 1 shows the formula $$ \int f(^gx) \ d \mu_H(x) = \frac{1}{\delta(g)} \int f(x) \ d\mu_H(x)$$.
+so the change of variables formula for the integral in the statement of (c) is actually wrong. Aswell as (d), but its correct if you replace $\delta$ by $1/\delta$.
+
+\vspace{0.3cm}
+
+(d) $$I(f) = \int_H \int_G f(h,g) \frac{1}{\delta(g)} \ d\mu_G d\mu_H$$
+
+define $d\nu := \delta(g) \ d\mu_G d\mu_H$ for convenience.
+
+First lets prove this integral is finite for all compactly supported $f \geq 0$, lets first consider the sets of the form $V = U \times U' \subseteq H \rtimes G$ for compact neighborhoods $U \subseteq H$ and $U' \subseteq G$, then $\nu(V) \leq \mu_H(U)\mu_G(U')B$ where $B$ is an upper bound of $\delta$ on $U'$ (since $\delta$ is continuous on the compact set $U'$). Next if $K$ is compact it can be covered by finitely many such rectangles since $G$ and $H$ are locally compact then nbhds. of this form cover $K$ so then $\nu(K)$ is finite. Then $I(f) \leq \nu(K) ||f||_{\infty}$ where $K = \text{supp}(f)$ and so $I(f)$ is finite. Prove the integral is left invariant by pushing symbols around.
+
+\end{document}
