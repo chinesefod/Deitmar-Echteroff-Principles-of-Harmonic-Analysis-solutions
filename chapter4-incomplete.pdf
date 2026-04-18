@@ -1,0 +1,34 @@
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz-cd}
+
+\title{test}
+\date{May 2025}
+
+\begin{document}
+
+\vspace{0.5cm}
+
+\textbf{Exercise 4.1}
+
+\vspace{0.5cm}
+
+(a) I first prove $\mathbb R$ is connected. Let $A \subseteq \mathbb R$ be a nonempty clopen set, then if I show that $A$ necessarily equals $\mathbb R$ then we are done. Assume for a contradiction that $x \in A$ and there is some $r \in \mathbb R$ with $r \not \in A$ and without loss of generality assume $r > x$. Then let $s = \sup \{l \in \mathbb R : [x,l] \subseteq A\}$, $s$ is finite since $[x,r] \not \subseteq A$ and so this set of all $l$ is bounded above by $r$ and the set is bounded above so the supremum exists. We also have $s \in A$ since $A$ is closed but since $A$ is open there is some $\epsilon > 0$ with $(s-\epsilon, s + \epsilon) \subseteq A$ which implies that $[x,s+ \frac{\epsilon}{2}] \subseteq A$ and thus $s$ wasn't truly the supremum. Contradiction. So $\mathbb R$ is connected. Next consider the intervals $(a,b)$, $[a,b)$ and $[a,b]$. There are surjective continuous maps from $\mathbb R$ onto these sets and so we are done by part (c)
+
+\vspace{0.3cm}
+
+If $U,V \subseteq X$ are two nonempty open sets covering $\overline A$ that each have nonempty intersection with $\overline A$ then by definition of closure each $U$ and $V$ have to have nonempty intersection with $A$ and by connectedness of $A$ the intersection of $U$ and $V$ has to contain points from $A$ and since $A \subseteq \overline A$ we get $\overline A \cap U \cap V \neq \emptyset$ and we are done.
+
+\vspace{0.3cm}
+
+\textbf{Exercise 4.2}
+
+\vspace{0.5cm}
+
+We use the base-3 digit expansion characterization of the Cantor set which is that $x \in C$ iff $x = 0.d_0d_1d_2...$ as a base 3 expansion for some $d_i = 0$ or $2$. If $x \neq y$ and $x < y$ are two points in the Cantor set then their expansion in base 3 has to differ at some point, at that point then $x$ will have the digit $0$ in this spot and $y$ will have digit $2$ in this spot, let $z$ be the real number with identical expansion up to this point but with a $1$ in this spot and all zero afterwards. Then $x < z < y$ and $C \cap \{r < z\}$ and $C \cap \{z < r\}$ will cover $C$ and contain $x$ and $y$ respectively.
+
+\end{document}
