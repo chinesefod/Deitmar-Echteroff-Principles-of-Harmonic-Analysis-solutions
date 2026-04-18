@@ -1,0 +1,86 @@
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz-cd}
+
+\title{test}
+\date{May 2025}
+
+\begin{document}
+\vspace{0.5cm}
+
+\textbf{Exercise 6.5}
+
+\vspace{0.5cm}
+
+Let $L \neq 0$ be a subrepresentation of $\mathbb C^n$ (subsapce invariant under unitary matrices). If $v \in \mathbb C^n$ with $\|v\| = 1$ and $v \in L$ then let $v_1: = v$ and $v_2 \in \{ v_1\}^\perp, v_3 \in \{v_0,v_1\}^\perp$ etc... with $\| v_i\| = 1$ so we obtain an orthonormal basis $v_1,...,v_n$. Then the linear map given by $Tv_i = v_{\sigma i}$ where $\sigma$ is a permutation of $1,...,n$ is unitary. This means that $v_i \in L$ for all $i = 1,...,n$ and $L = \mathbb C^n$.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 6.6}
+
+\vspace{0.5cm}
+
+(a) According to 5.41 in Axlers "Linear algebra done right" 4th edition (availible for free on his website) the only eigenvalues of an upper triangular matrix are the values on the diagonal. So $1$ is the only eigenvalue of $A$. Then if $SAS^{-1} = U$ it means $U$ has $1$ as its only eigenvalue and because unitaries are normal they are diagonalizable and thus $U = I$ and therefore $A = I$ which isn't possible if $t \neq 0$.
+
+(b) 
+\vspace{0.5cm}
+
+\textbf{Exercise 6.9}
+
+\vspace{0.5cm}
+
+\noindent We use proposition B.6.3 to prove Bochner integrability of $f(x)\pi(x)$.
+
+\vspace{0.5cm}
+
+Let $E =\{|f| > 0\} = \bigcup\limits_{n = 1}^\infty \{|f| > \frac{1}{n}\}$ and put $\phi(x) = f(x) \pi(x)$
+
+$$\mu(\{|f| > \frac{1}{n}\}) \leq n \|f\|_1 \qquad (\text{Markov's inequality})$$
+
+Which means that $E$ is $\sigma-$finite. Proposition 7.5 in Folland's real analysis says that Radon measures are inner regular on all $\sigma-$finite sets so there is a sequence of compact $K_n$ that approximate $E$ from inside, let $K = \bigcup\limits_{n = 1}^\infty K_n$ then put $N = E - K$ and we have $\mu(N) = 0$. $\pi(K)$ is separable since it's $\sigma-$compact and let $\{t_n \ | \ n \in \mathbb N\}$ be a countable set in $\mathcal B(V_\pi)$ whose closure contains $\pi(K)$, then the closure of 
+$$A =\{qt_n \ | \ q \in \mathbb Q, n \in \mathbb N \}$$
+will contain $\phi(X - N)$ and this will be enough to see $\phi$ is Bochner integrable since $\int_X \| \phi \| d \mu = \int_X | f| d \mu < \infty$.  
+
+If $x \in X - N$ there are two possibilities either $x \in K$ or $x \in E^c$, let $x \in E^c$ first. Then since $f(x) = 0$ and $0 \in A$ and $|f(x)\pi(x) - 0 | = 0$, $f(x)\pi(x) \in \overline A$.
+
+Next if $x \in K$ then 
+\begin{align*}
+    \|f(x)\pi(x) - qt_n\| & \leq  \| f(x) \pi(x) - q \pi(x) \| + \| q\pi(x) - qt_n \|\\
+    & = | f(x) - q| + \| q\pi(x) - qt_n \|\\
+\end{align*}
+so if we first pick $q \in \mathbb Q$ with 
+$$|f(x) - q| < \epsilon/2$$ 
+and then $t_n$ so that 
+$$\|\pi(x) - t_n\| < \frac{\epsilon}{2 |q|}$$ 
+we are done proving Bochner integrability of $\phi$. 
+
+Since $T \mapsto (Tv,w)$ is bounded operator $\mathcal B(V_\pi) \rightarrow \mathbb C$ we get 
+
+\begin{align*}
+    (\pi(f)v,w) = ( (\int_X f(x) \pi(x) \ d \mu)v, w) =  \int_X f(x) (\pi(x)v,w) \ d \mu
+\end{align*}
+which agrees with proposition 6.2.1.
+\vspace{0.5cm}
+
+\textbf{Exercise 6.10}
+
+\vspace{0.5cm}
+
+Let $A$ be a nondiscrete LCA-group so that $\widehat A$ is not compact, then if 
+
+$$\pi(x) = L_x : L^2(A) \rightarrow L^2(A)$$
+
+then $\pi(\phi_U)f = \phi_U * f$ and $\|\phi_U * f - f\|_2 = \|\widehat{\phi_U} \widehat f - \widehat f\|_2$ aswell as $\|f \|_2 = \|\hat f\|_2$ so then the operator norm of $\pi(\phi_U) - \text{Id}$ is the same as the operator norm of the multiplication operator $g \rightarrow (\widehat{\phi_U} - 1)g$ on $L^2(\widehat A)$ but the norm of that operator is $\|\widehat\phi_U - 1\|_{\infty}$ and this is $\geq 1$ since $\widehat \phi_U \in C_0(\widehat A)$ and $\widehat A$ is not compact.
+\vspace{0.5cm}
+
+\textbf{Exercise 6.11}
+
+\vspace{0.5cm}
+
+Let $\mathbb Z_2$ act on $\mathbb C^2$ by $\pi(1)(x,y) = (y,x), \pi(0) = id$ then $L =\{(\lambda, \lambda): \lambda \in \mathbb C \}$ is an invariant subspace $L \neq 0$ and $L \neq \mathbb C^2$ so $\pi$ is not irreducible, however $\pi(1)(1,0) = (0,1)$ so $(1,0)$ is a cyclic vector.
+\vspace{0.5cm}
+\end{document}
