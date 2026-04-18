@@ -1,0 +1,201 @@
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz-cd}
+
+\title{test}
+\date{May 2025}
+
+\begin{document}
+
+\vspace{0.5cm}
+
+\textbf{Exercise 5.2}
+
+\vspace{0.5cm}
+
+\noindent We prove that 
+$$ \left\| \frac{\exp((t+h)T) - \exp(tT)}{h} -T\exp(tT)\right\|_{op} \rightarrow 0, \qquad h \rightarrow 0, \ h \in \mathbb R$$
+Fix $t \in \mathbb R$,
+
+\begin{align*}
+\left\| \frac{\exp((t+h)T) - \exp(tT)}{h} -T\exp(tT)\right\| & = \left\| \exp(tT) ( \frac{\exp(hT) - I}{h} - T)\right\| \\
+& \leq \| \exp(tT) \| \left\| \frac{\exp(hT) - I}{h} - T \right\| \\
+& = C\left\| \frac{\exp(hT) - I}{h} - T\right\|
+\end{align*}
+and by functional calculus if 
+$$g_h(x) = \frac{e^{hx} - 1}{h} - x$$ 
+considered as an element of $C(\sigma(T))$ then $g_h(T) =\frac{\exp(hT) - I}{h} - T$ and 
+$$\|g_h\|_\infty = \left\|\frac{\exp(hT) - I}{h} - T \right\|$$ 
+so if we can prove $g_h \rightarrow 0$ uniformly on the compact set $\sigma(T)$ as $h \rightarrow 0$ then we are done. 
+
+Using the power series expansion of the exponential,
+\[
+e^{hx} = 1 + hx + \sum_{n \ge 2} \frac{(hx)^n}{n!},
+\]
+we obtain
+\[
+g_h(x)
+= \frac{1}{h} \left( hx + \sum_{n \ge 2} \frac{(hx)^n}{n!} \right) - x
+= \sum_{n \ge 2} \frac{h^{n-1} x^n}{n!}.
+\]
+
+Let $M = \sup_{x \in \sigma(T)} |x|$. Then for every $x \in \sigma(T)$,
+\[
+|g_h(x)|
+\le \sum_{n \ge 2} \frac{|h|^{\,n-1} M^n}{n!}
+= \frac{ e^{|h|M} - 1 }{|h|} - M \rightarrow 0
+\]
+since $e^{xM}$ is differentiable at $x = 0$ with derivative $=M$.
+
+which proves \(g_h\to0\) uniformly on \(\sigma(T)\).
+
+\vspace{0.5cm}
+
+\textbf{Exercise 5.3}
+
+\vspace{0.5cm}
+
+\noindent If $T$ is compact then $T^*$ is compact: 
+
+\vspace{0.3cm}
+
+We prove this for Banach spaces, let $T: E \rightarrow F$ be compact, 
+
+\noindent $B = \{x \in E : \|x\| \leq 1 \}$ and $f_n \in F^*$ be a bounded sequence of continuous linear functionals, $\forall n:\|f_n\| \leq C$.
+consider $g_n = f_n|_{\overline {T(B)}} \in C(\overline {T(B)})$ then we have a uniformly equicontinuous and uniformly bounded sequence of continuous functions $g_n$ (since $\|g_n\|_{\infty} \leq ||T||C$ and $\overline{T(B)}$ is bounded) on the compact metric space $\overline{T(B)}$ so they have a Cauchy subsequence $g_{n_k}$ by Arzelà–Ascoli. We also observe that $\sup\limits_{y \in \overline{T(B)}}g(y) = \sup\limits_{y \in T(B)} g(y)$ for continuous $g$ since $T(B)$ is dense in $\overline{T(B)}$.
+\begin{align*}
+\| g_{n_s} -  g_{n_r} \|_{\infty} &= \sup_{y \in T(B)} |g_{n_s}(y) -  g_{n_r}(y)| \\
+& = \sup_{y \in T(B)} |f_{n_s}(y) -  f_{n_r}(y)| \\
+& = \sup_{x \in B} |f_{n_s}(Tx) -  f_{n_r}(Tx)|\\
+& = \|T^*f_{n_s} -  T^*f_{n_r}\|\\
+\end{align*}
+and thus $T^*f_n$ has a Cauchy subsequence and $T^* : F^* \rightarrow E^*$ is compact.
+
+\vspace{0.3cm}
+
+\noindent If $T^*T$ is compact then $T$ is compact:
+
+\vspace{0.3cm}
+
+Put $A:=T^*T$. Then $A$ is compact, self-adjoint and positive. The set of compact operators $\mathcal K(H)$ is a $C^*$ sub-algebra of $\mathcal B(H)$, $A$ is a positive element of this $C^*$ algebra aswell (lemma 2.7.2) so $|T| =\sqrt A$ exists and is contained in $\mathcal K(H)$ and agrees with the usual square root by uniqueness of positive square roots in $C^*$ algebras (exercise 2.19). Alternatively you can diagonalize $T^*T$ using spectral theorem for self adjoint compact operators and use the fact that diagonal operators are compact iff their eigenvalues tend to zero so that $ \lambda_n \rightarrow 0$ implies $\sqrt \lambda_n \rightarrow 0$ so that $\sqrt{T^*T}$ is compact.
+
+Now use the polar decomposition $T=U|T|$. Since the product of a bounded operator and a compact operator is compact, $T=U|T|$ is compact.
+ 
+\vspace{0.5cm}
+
+\textbf{Exercise 5.4}
+
+\vspace{0.5cm}
+
+\noindent Let $s_i = s_i(T)$. If we let
+$$R_{j+1} = \inf\limits_{\dim(M) \leq j} \sup_{\substack{w \perp M \\ \|w\| = 1}} \|Tw\|$$
+we will prove that $s_{j+1} = R_{j+1}$. First of all if $M = \text{span}(v_1,...,v_j)$ where $v_i$ are orthonormal eigenvectors of $|T|$ corresponding to eigenvalues $s_i$ then if $w \perp M$ and $\| w\| = 1$ then 
+$$w = \lambda v + \sum\limits_{i =j+1}^\infty \lambda_i v_i \ \text{and} \ |\lambda|^2 +  \sum\limits_{i =j+1}^\infty |\lambda_i|^2 = 1$$ 
+where $v_i$ are orthonormal eigenvectors of $|T|$ corresponding to eigenvalues $s_i$ and $|T|v = 0$, then
+
+$$ \|Tw\| = \||T|w\| = \sqrt{\sum\limits_{i =j+1}^\infty |s_i\lambda_i|^2} \leq s_{j+1} \sqrt{\sum\limits_{i =j+1}^\infty |\lambda_i|^2} \leq s_{j+1}$$
+
+and if we pick $\lambda_{j+1} = 1$ and all other $\lambda = \lambda_i = 0$ then $||Tw|| = s_{j+1}$ so that indeed $\sup_{\substack{w \perp M \\ \|w\| = 1}} \|Tw\| = s_{j+1}$ for our $M$ that we picked and this implies $s_{j+1} \geq R_{j+1}$.
+
+Next if $M$ is an arbitrary space of dimension $\dim(M) \leq j$ then let $E = \text{span}(v_1,...,v_{j+1})$, the space $M^{\perp} \cap E \neq \{0\}$ since if we consider $L : E \rightarrow \mathbb C^{\dim(M)}$ given by 
+$$Lx = ((x,w_1),...,(x,w_{\dim(M)}))$$ 
+and where $w_i$ is a basis for $M$, then $\ker L = M^{\perp} \cap E$ and $\ker L \neq 0$ by counting dimensions. So let $w \in M^{\perp} \cap E$ with $\|w\| = 1$. Then $ w = \sum\limits_{i = 1}^{j+1} \lambda_i v_i $ and
+$$\|Tw\| =\||T|w\| =  \sqrt{\sum\limits_{i = 1}^{j+1} |s_i\lambda_i|^2} \geq s_{j+1}\sqrt{\sum\limits_{i = 1}^{j+1} |\lambda_i|^2} = s_{j+1}$$
+so that $$\sup_{\substack{w \perp M \\ \|w\| = 1}} \|Tw\| \geq s_{j+1} \ \text{  and } \ \inf\limits_{\dim(M) \leq j} \sup\limits_{\substack{w \perp M \\ \|w\| = 1}} \| Tw \| \geq s_{j+1}$$ and therefore putting together the two inequalities $R_{j+1} \geq s_{j+1}$ and $s_{j+1} \geq R_{j+1}$ we get $s_{j+1} = R_{j+1}$.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 5.5}
+
+\vspace{0.5cm}
+
+$T^*T$ is compact, invertible and self adjoint, this means that $0 \not \in \sigma(T^*T)$ and thus by Theorem 5.2.2 $\sigma(T^*T)$ has no accumulation points. Since it's also a compact set it means that it's a finite set. This means that since $T^*T = \sum\limits_{\lambda \in \sigma(T^*T)} \lambda P_\lambda$ where $P_\lambda$ are the projections onto the finite dimensional eigenspaces (also theorem 5.2.2) and so $T^*T$ has finite dimensional range and because its a bijection of course then $\dim(\mathcal H) < \infty$.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 5.6}
+
+\vspace{0.5cm}
+
+We need to prove that $T(B)$ is closed if $B = \{x \in \mathcal H:\|x\| \leq 1\}$. Let $Tv_n \rightarrow w$ where $\|v_n\| \leq 1$, we can reduce to the case of a separable Hilbert space by restricting our attention to $\mathcal H' = \overline{\text{span}\{v_1, v_2,...\}} \subseteq \mathcal H$. Each bounded sequence in a separable Hilbert space has a weakly convergent subsequence. This is possible to prove directly in $\ell^2(\mathbb N)$ (which is the only separable Hilbert space up to unitary equivalence) by using this condition for weak convergence, 
+$$x_{n} \rightharpoonup x$$ 
+$$\text{iff}$$
+$$x^{(i)}_{n} \rightarrow x^{(i)} \ \text{ for each } i \in \mathbb N \text{ and } \ x_n \ \text{ is bounded in }\ell^2(\mathbb N) \ $$
+
+So if $y_n$ is any bounded sequence in $\ell^2(\mathbb N)$ use a diagonal argument to prove that there is a subsequence that converges in each coordinate and since $y_{n_k}$ is bounded then we got ourselves a weakly convergent subsequence. Alternatively, in a separable Banach space the closed unit ball in the dual space with weak-* topology will be metrizable and compact so sequences have convergent subsequences. So let $v_{n_k} \rightharpoonup v$ in $\mathcal H'$, then since compact operators take weakly convergent sequences to norm convergent sequences, $Tv_{n_k} \rightarrow Tv$ and thus $w = Tv \in T(B)$ and $T(B)$ is closed.
+\vspace{0.5cm}
+
+\textbf{Exercise 5.7}
+
+\vspace{0.5cm}
+(a)
+
+\begin{align*}
+    \text{tr}(T^*) & =\sum_i (T^*e_i, e_i) \\
+    & =\sum_i (e_i, Te_i) \\
+    & = \overline{\sum_i (Te_i, e_i)} = \overline{\text{tr}(T)}
+\end{align*}
+
+(b)
+\begin{align*}
+    \text{tr}(ST) & = \sum\limits_i (STe_i, e_i)\\
+    &= \sum\limits_i (Te_i, S^* e_i)\\
+    & = \sum\limits_i \sum\limits_j (Te_i, e_j) (e_j, S^*e_i) \\
+    (\text{swap sum order) } \ & = \sum\limits_j \sum\limits_i (Te_i, e_j) (e_j, S^*e_i) \\
+    & = \sum\limits_j \sum\limits_i (S e_j, e_i)(e_i, T^*e_j)  \\
+    & = \sum\limits_j (Se_j, T^*e_j)\\
+    & = \sum\limits_j (TSe_j, e_j) = \text{tr}(TS)
+\end{align*}
+
+where the interchange of order of sum over $i$ and sum over $j$ is justified by square summability over $i,j$ for $(Te_i,e_j)$ and $(e_j,S^*e_i)$, indeed 
+
+\begin{align*}
+    \sum\limits_i \sum\limits_j |(Te_i, e_j)|^2 &= \sum\limits_i \|Te_i\|^2 \\
+    & = \|T\|^2_{HS} < \infty
+\end{align*}
+and similarly for $(e_j,S^*e_i)$, thus $(Te_i, e_j) (e_j, S^*e_i)$ is absolutely summable over $i,j$ by Hölder and Fubini-Tonelli for sums applies.
+
+
+
+
+
+\vspace{0.5cm}
+
+
+\textbf{Exercise 5.11}
+
+\vspace{0.5cm}
+
+If $\lambda \neq 0$ then $\frac{1}{\lambda}T$ is nilpotent and 
+$$(I-\frac{1}{\lambda} T)^{-1} = \sum\limits_{n = 0}^{k-1}(\frac{1}{\lambda}T)^n$$ 
+(just geometric series) so $\lambda \not \in \sigma(T)$. $T$ can't be invertible because it would imply $T^k = 0$ is invertible so $0 \in \sigma(T)$ and we see $\sigma(T) = \{0\}$.
+
+The Volterra operator 
+$$T:L^2([0,1]) \rightarrow L^2([0,1]) : f \mapsto \int\limits_0^x f(y) \ dy $$
+has zero spectrum and is injective (by the Lebesgue differentiation theorem you can recover $f$ from $Tf$) so it's not nilpotent.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 5.12}
+
+\vspace{0.5cm}
+
+This problem as stated is incorrect, $|T|$ being invertible does not imply that $T$ is invertible if there are no extra assumptions on $T$. For example let 
+$$ T =R : \ell^2(\mathbb N) \to \ell^2(\mathbb N)$$ 
+be the right shift operator, then $R^* = L$ (left shift) and $R^*R = I$ so $|R| = I$ but $R$ is not invertible. However, if we assume $T$ to be a normal operator then if $|T|$ is invertible it does imply that $T$ is invertible because of the spectral mapping theorem for the functional calculus of normal elements in $C^*-$algebras: $|\sigma(T)| = \sigma(|T|)$. So that $0 \not \in \sigma(|T|)$ implies $0 \not \in \sigma(T)$.
+
+\vspace{0.3cm}
+
+Now we can drop the normality assumption on $T$. If $T$ is invertible then $T^*T$ is invertible, $0 \not \in \sigma(T^*T)$ but then by functional calculus $0 \not \in \sigma(\sqrt{T^*T}) = \sqrt{\sigma(T^*T)}$ so $|T|$ is invertible.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 5.14}
+
+\vspace{0.5cm}
+
+\end{document}
