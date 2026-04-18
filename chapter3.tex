@@ -1,0 +1,297 @@
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz-cd}
+
+\title{test}
+\date{May 2025}
+
+\begin{document}
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.1}
+
+\vspace{0.5cm}
+
+Let $X$ be locally compact Hausdorff, let $Y$ be any topological space, and let $L(K,V)$ denote the standard basic open sets for the compact–open topology on $\operatorname{Map}(X,Y)$. We show that the family
+\[
+\{L(\overline U,V) : U\in\mathcal U_c,\ V\subseteq Y\ \text{open}\}
+\]
+generates the compact–open topology.
+
+Fix $f\in L(K,V)$. Since $f(K)\subseteq V$, the preimage $f^{-1}(V)$ is an open neighbourhood of $K$. By local compactness and Lemma A.8.1 there exists a relatively compact open set $U$ with
+\[
+K\subseteq \overline U \subseteq f^{-1}(V).
+\]
+Because $\mathcal U$ is a basis, for each $x\in K$ pick $U_x\in\mathcal U$ with $x\in U_x\subseteq U$; each $U_x$ is relatively compact, since $\overline U_x \subseteq \overline U$, so $U_x\in\mathcal U_c$. By compactness of $K$ finitely many $U_{x_1},\dots,U_{x_n}$ cover $K$. Set $U_i:=U_{x_i}$. Then $\overline U_i\subseteq\overline U\subseteq f^{-1}(V)$ for each $i$, hence $f\in\bigcap_{i=1}^n L(\overline U_i,V)\subseteq L(K,V)$.
+
+Thus every basic set $L(K,V)$ is a union of finite intersections of sets $L(\overline U,V)$ with $U\in\mathcal U_c$, so the family $\{L(\overline U,V)\}$ generates a topology that contains the compact–open topology. Conversely, each $L(\overline U,V)$ is itself a basic compact–open set, so the two families generate the same topology.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.2}
+
+\vspace{0.5cm}
+
+Let $A$ be a second countable LCA group with a countable basis $\mathcal U$, and let $\mathcal U_c\subset\mathcal U$ denote the relatively compact members of $\mathcal U$. Let $\mathcal B$ be a countable basis for $\mathbb T$ and let $\mathcal B'$ be the set of finite unions of elements of $\mathcal B$ (then $\mathcal B'$ is countable). By Exercise 3.1 the sets $L(\overline U,V)$ with $U\in\mathcal U_c$ and $V\subseteq\mathbb T$ open form a subbasis for $\widehat A$.
+
+Fix $f\in L(\overline U,V)$. The set $f(\overline U)$ is compact, so it can be covered by finitely many elements of $\mathcal B$ contained in $V$; let $V'\in\mathcal B'$ be their union. Then
+\[
+f\in L(\overline U,V')\subseteq L(\overline U,V).
+\]
+Therefore each $L(\overline U,V)$ is a union of sets of the form $L(\overline U,V')$ with $V'\in\mathcal B'$. Hence the collection
+\[
+\{L(\overline U,V') : U\in\mathcal U_c,\ V'\in\mathcal B'\}
+\]
+is countable and generates the compact–open topology on $\widehat A$. In particular $\widehat A$ has a countable subbasis and thus a countable basis.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.3}
+
+\vspace{0.5cm}
+
+If $x \in \mathbb R$ and $q_n \rightarrow x$ where $q_n \in \mathbb Q$ then $b(q_n)_t \rightarrow b(x)_t$ in each coordinate $t$. This means that $\overline {b(\mathbb Q)}$ contains $b(x)$ and thus since $x$ was just a general element contains the entire $b(\mathbb R)$ and so also contains $ B =\overline {b(\mathbb R)}$ and then $b(\mathbb Q)$ is a countable dense subset of $B$.
+
+\vspace{0.3cm}
+
+Let $K = \widehat {\mathbb R_{disc}}$, then $B = \overline{b(\mathbb R)}$ is a closed subgroup of $K$, this is because both $K$ and $B$ are closed subspaces of $\prod \limits_{r \in \mathbb R} \mathbb T$ and $t \rightarrow e^{2 \pi ixt}$ are all characters on $\mathbb R_{disc}$.
+
+\vspace{0.3cm}
+
+Now, assume for a contradiction that $B$ is properly contained in $K$, this would imply that the LCA group $K/B \neq 1$ would have nontrivial characters (by proposition 3.5.2 there are always nontrivial characters on nontrivial groups), but then if $\chi' \in \widehat{K/B}$ was such a nontrivial character we would get by precomposing with the projection $K \rightarrow K/B$ a nontrivial character $\chi$ on $K$ that is $1$ on $B$. If it is $1$ on $B$ it is also $1$ on $b(\mathbb R)$. We know $\chi = \delta(r)$ for some $r \in \mathbb R_{disc}$ by Pontryagin duality so then $\chi(b(x)) =  e^{2\pi ixr} = 1$ for all $x \in \mathbb R$. This condition implies $r = 0$ and then $\chi = 1$ on the entirety of $K$ and $\chi$ is trivial which is a contradiction. 
+
+\vspace{0.3cm}
+
+So $B = \widehat{\mathbb R_{disc}}$ and if $B$ was second countable by exercise 3.2 $\widehat{B} = \mathbb R_{disc}$ would also be second countable. Contradiction.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.4}
+
+\vspace{0.5cm}
+
+(i) $\mathbb T \cong \widehat{\mathbb Z}$ as topological groups.
+
+\smallskip
+
+Define $\phi:\mathbb T\to\widehat{\mathbb Z}$ by $\phi(z)(n)=z^n$. This map is a group homomorphism and bijective; continuity follows because if $z_i\to z$ in $\mathbb T$ then for each fixed $n$ we have $\phi(z_i)(n)=z_i^n\to z^n=\phi(z)(n)$, hence $\phi(z_i)\to\phi(z)$ uniformly on finite sets. The compact subsets of $\mathbb Z$ are precisely the finite subsets, so $\phi$ is continuous for the compact–open topology. Conversely, if $\phi(z_i)\to\phi(z)$ uniformly on compact subsets then in particular $\phi(z_i)(1)\to\phi(z)(1)$, i.e. $z_i\to z$, so $\phi^{-1}$ is continuous. Thus $\phi$ is an isomorphism of topological groups.
+
+\medskip
+
+(ii) $\mathbb Z \cong \widehat{\mathbb T}$ as topological groups.
+
+\smallskip
+
+Define $\psi:\mathbb Z\to\widehat{\mathbb T}$ by $\psi(n)(z)=z^n$. Since $\mathbb Z$ is discrete every map from $\mathbb Z$ is continuous, and by Proposition 3.1.5 $\widehat{\mathbb T}$ is discrete, so $\psi$ is a homeomorphism once bijectivity is established (follows from standard arguments).
+
+\medskip
+
+(iii) $\mathbb R \cong \widehat{\mathbb R}$ as topological groups.
+
+\smallskip
+
+Define $\theta:\mathbb R\to\widehat{\mathbb R}$ by $\theta(y)(x)=e^{ixy}$. One may check bijectivity (for instance via covering-space methods); it remains to check it's a homeomorphism, continuity in both directions can be showed using sequences since both spaces are second countable. To show continuity, let $y_n\to y$ in $\mathbb R$ and let $K$ be a compact subset of $\mathbb R$. If $K \subseteq [-B,B]$ then for $x\in K$
+\[
+|e^{ixy_n}-e^{ixy}|=|e^{ix(y_n-y)}-1|\le |x||y_n-y|\le B|y_n-y|,
+\]
+where we used the inequality $|e^{ix} - 1| \leq |x|$, so convergence is uniform on $K$. Thus $\theta(y_n)\to\theta(y)$ in the compact–open topology. For the inverse, consider the converse statement, that if $y_n \not \rightarrow y $ then $\theta(y_n) \not \rightarrow \theta(y)$. So then if $y_n\not\to y$ then there is $\delta>0$ and infinitely many $n$ with $|y_n-y|\ge\delta$. Take $K=[-\pi/\delta,\pi/\delta]$; for those $n$ for which $|y_n - y| \geq \delta$ choose $x=\pi/(y_n-y)\in K$ to obtain
+$$e^{ix(y_n-y)} = e^{i\pi} = -1$$
+$$|e^{ixy_n} - e^{ixy}| = |e^{ix(y_n-y)} - 1 | = |-1-1| = 2$$
+
+so that $\sup \limits_{x \in K} |\theta(y)(x)-\theta(y_n)(x)| = 2$ for infinitely many $n$.
+
+so $\theta(y_n)\not\to\theta(y)$. Hence $\theta^{-1}$ is continuous, and $\theta$ is a homeomorphism.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.5}
+
+\vspace{0.5cm}
+
+The function $\phi :\widehat A \times \widehat B \rightarrow \widehat{A \times B}$ given by $\phi(\chi_A, \chi_B)(a,b) = \chi_A(a)\chi_B(b)$ can be checked to be bijective through standard arguments. 
+
+\vspace{0.3cm}
+
+Continuity of $\phi$: If $\chi_i \rightarrow \chi \in \widehat A$ and $\chi'_i \rightarrow \chi' \in \widehat B$. Then we prove that $\phi(\chi_i, \chi'_i)$ converges locally uniformly to $\phi(\chi, \chi')$ on $A \times B$, let $(u,v) \in U \times V \subseteq A \times B$ where both $U$ and $V$ are compact neighborhoods. Then 
+$$|\chi_i(u)\chi'_i(v) - \chi(u)\chi'(v)| \leq |\chi_i(u)\chi'_i(v) - \chi_i(u)\chi'(v)| + |\chi_i(u)\chi'(v) - \chi(u)\chi'(v)|$$
+$$=|\chi'_i(v) - \chi'(v)| + |\chi_i(u) - \chi(u)| $$
+and since $\chi_i \rightarrow \chi$ uniformly on $U$ (since its compact) and $\chi'_i \rightarrow \chi'$ uniformly on $V$ then $\phi(\chi_i, \chi'_i) \rightarrow \phi(\chi,\chi')$ locally uniformly which is an equivalent notion of convergence on compact-open topology according to Lemma 3.1.2(c). Now the inverse direction, if $\phi(\chi_i, \chi'_i) \rightarrow \phi(\chi,\chi')$ and $u \in A$ and we pick some compact neighborhood $u \in U \subseteq A$, then $U \times \{1\}$ is a compact set and $\phi(\chi_i, \chi'_i) \rightarrow \phi(\chi,\chi')$ uniformly on this compact set which means that $\chi_i \rightarrow \chi$ uniformly on $U$ and so $\chi_i \rightarrow \chi$ locally uniformly, same argument implies $\chi'_i \rightarrow \chi'$ locally uniformly and so $(\chi_i, \chi'_i) \rightarrow(\chi, \chi')$ in $\widehat A \times \widehat B$ and thus $\phi$ is continuous in both direction and is a homeomorphism.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.6}
+
+\vspace{0.5cm}
+
+$(\mathbb R,+) \times \mathbb T \approx \mathbb C^{\times}$ through $(r,\lambda) \mapsto e^r\lambda$ and then use exercises 3.5 \& 3.4.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.7}
+
+\vspace{0.5cm}
+
+The bijection of sets $\text{Hom}(\bigoplus\limits_{j \in J} A_j, \mathbb T) \approx \prod\limits_{j \in J} \text{Hom}(A_j, \mathbb T): \chi \mapsto (\chi|_{A_j})_{j \in J}$ is standard group theory, continuity isn't difficult to check and thus its a homeomorphism since its a continuous bijection between two compact Hausdorff spaces.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.8}
+
+\vspace{0.5cm}
+
+The exercise uses Exercise 3.11: a continuous group homomorphism 
+
+$\phi:A\rightarrow B$ induces a continuous homomorphism $\widehat\phi:\widehat B\to\widehat A$ given by $\widehat\phi(\chi)=\chi\circ\phi$. We regard the $\widehat A_i$ as a directed system with transition maps $\phi_j^i:=\widehat{(p_j^i)}$.
+
+\vspace{0.3cm}
+
+\noindent (a) Let $A=\varprojlim A_i$. Define
+\[
+\Phi:\varinjlim \widehat A_i \longrightarrow \widehat A
+\]
+by sending the equivalence class $[\chi]$, represented by $\chi:A_j\to\mathbb T$, to the character $\chi\circ\pi_j:A\to\mathbb T$, where $\pi_j:A\to A_j$ is the projection. The map $\Phi$ is well defined and continuous.
+
+\medskip
+
+\noindent\textbf{Injectivity.}  Suppose $\chi:A_j\to\mathbb T$ satisfies $\chi\circ\pi_j\equiv 1$ on $A$. Equivalently $\pi_j(A)=\bigcap_{k\ge j} p_j^k(A_k)\subseteq\ker\chi$. Fix an open neighbourhood $U$ of $1\in\mathbb T$ that contains no nontrivial subgroups. Then
+\[
+\bigcap_{k\ge j} p_j^k(A_k)=\pi_j(A)\subseteq\ker\chi\subseteq\chi^{-1}(U).
+\]
+Each set $p_j^k(A_k)$ is compact, and their intersection is contained in the open set $\chi^{-1}(U)$; by compactness there exists $k\ge j$ with
+\[
+p_j^k(A_k)\subseteq\chi^{-1}(U).
+\]
+Hence $(\chi\circ p_j^k)(A_k)\subseteq U$. But $\chi\circ p_j^k(A_k)$ is a subgroup of $\mathbb T$ contained in $U$, and $U$ has no nontrivial subgroups; thus $\chi\circ p_j^k$ is the trivial character on $A_k$. Therefore $\widehat{(p_j^k)}(\chi)=1$ in $\widehat A_k$, so $[\chi]$ is equivalent to the trivial class in the direct limit. This proves injectivity of $\Phi$.
+
+\medskip
+
+\noindent\textbf{Surjectivity.} Let $\psi\in\widehat A$ be a character. Choose an open neighbourhood $U\subset\mathbb T$ of $1$ containing no nontrivial subgroups. The set $\psi^{-1}(U)$ is an open neighbourhood of $1$ in $A$. In the inverse limit topology a neighbourhood basis at $1$ consists of sets of the form
+\[
+\pi_{i_0}^{-1}(V_{i_0})\cap\cdots\cap\pi_{i_n}^{-1}(V_{i_n}),
+\]
+with each $V_{i_k}$ a neighbourhood of $1$ in $A_{i_k}$. Hence there exist indices $i_0,\dots,i_n$ and neighbourhoods $V_{i_k}\subseteq A_{i_k}$ such that
+\[
+\pi_{i_0}^{-1}(V_{i_0})\cap\cdots\cap\pi_{i_n}^{-1}(V_{i_n})\subseteq\psi^{-1}(U).
+\]
+Choose $j$ with $j\ge i_k$ for all $k$ and a unit neighbourhood $V_j\subseteq A_j$ with 
+
+\noindent $p_{i_k}^j(V_j)\subseteq V_{i_k}$ for each $k$. Then $\pi_j^{-1}(V_j) \subseteq \pi_{i_0}^{-1}(V_{i_0})\cap\cdots\cap\pi_{i_n}^{-1}(V_{i_n})$ and we see in fact sets of the form $\pi_j^{-1}(V_j)$ make up a neighborhood basis by themselves, no need for finite intersections.
+\[
+\ker(\pi_j) \subseteq \pi_j^{-1}(V_j)\subseteq\pi_{i_0}^{-1}(V_{i_0})\cap\cdots\cap\pi_{i_n}^{-1}(V_{i_n})\subseteq\psi^{-1}(U)
+\]
+In particular, $\psi(\ker\pi_j)\subseteq U$. Since $\ker\pi_j$ is a subgroup of $A$ and $\psi(\ker\pi_j)$ is a subgroup of $\mathbb T$ contained in $U$, it follows that $\psi(\ker\pi_j)=\{1\}$. Thus $\psi$ is trivial on $\ker\pi_j$ and therefore descends to a continuous character
+\[
+\widetilde\psi: A/\ker\pi_j \longrightarrow \mathbb T.
+\]
+The map $A/\ker\pi_j\to\pi_j(A)$ is a continuous bijection between a compact space and a Hausdorff space, hence a homeomorphism; thus $\widetilde\psi$ yields a continuous character on the closed subgroup $\pi_j(A)\subseteq A_j$. By Exercise 3.10 the character on the closed subgroup $\pi_j(A)$ extends to some character $\psi': A_j \rightarrow \mathbb T$. Then $\Phi([\psi'])=\psi'\circ\pi_j=\psi$, proving surjectivity.
+
+\medskip
+
+Combining injectivity and surjectivity, $\Phi$ is a bijection; together with continuity (and the usual compactness/Hausdorff arguments when they apply) this identifies $\varinjlim\widehat A_i$ with $\widehat A$.
+
+\vspace{0.3cm}
+
+\noindent (b) First note that each $B_j$ is given the discrete topology, so $\varinjlim B_j$ is discrete; hence $\widehat{\varinjlim B_j}$ is compact. On the other hand $\varprojlim \widehat B_j$ is a closed subspace of the product $\prod_{j}\widehat B_j$, so it is compact as well.
+
+Define the natural map
+\[
+\Psi:\widehat{\varinjlim B_j}\longrightarrow \varprojlim \widehat B_j,\qquad \Psi(\chi)=(\chi\circ\psi_j)_{j\in I},
+\]
+where $\psi_j:B_j\to\varinjlim B_j$ are the canonical maps. The commutativity of the diagrams
+\[
+\begin{tikzcd}
+B_i \arrow[rr,"\phi_i^j"] \arrow[dr,"\psi_i"'] & & B_j \arrow[dl,"\psi_j"] \\
+& \varinjlim B_j &
+\end{tikzcd}
+\qquad\text{and}\qquad
+\begin{tikzcd}
+B_i \arrow[rr,"\phi_i^j"] \arrow[dr,"\chi^{(i)}"'] & & B_j \arrow[dl,"\chi^{(j)}"] \\
+& \mathbb T &
+\end{tikzcd}
+\]
+shows that $\Psi(\chi)\in\varprojlim\widehat B_j$, and conversely any element $(\chi^{(j)})_{j}$ of the inverse limit glues to a map $\chi:\varinjlim B_j\to\mathbb T$ by the universal property of the direct limit. Thus $\Psi$ is a bijection.
+
+To check continuity: if a net $\chi_\alpha\to\chi$ in $\widehat{\varinjlim B_j}$ then for each fixed $j$ we have $\chi_\alpha\circ\psi_j\to\chi\circ\psi_j$ in $\widehat B_j$, so $\Psi(\chi_\alpha)\to\Psi(\chi)$ in the product topology; hence $\Psi$ is continuous. We therefore have a continuous bijection between compact Hausdorff spaces, so $\Psi$ is a homeomorphism.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.9}
+
+\vspace{0.5cm}
+
+Theorem 3.5.8 Implies that $f \in C_0(A)$ (if you modify $f$ on a null set) so $f$ is (essentially) bounded, $|f| \leq B$ and thus $\int |f|^2 \leq B \int |f| < \infty$.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.10}
+
+\vspace{0.5cm}
+
+$B \subseteq (B^\perp)^\perp$ is obvious and if $x \not \in B$ then there is some character $\chi$ on $A$ that is $1$ on $B$ but $\chi(x) \neq 1$ (proposition 3.5.2 and considering the quotient group $A/B$ as in exercise 3.3) so then $x\not \in (B^\perp)^\perp$ so $B = (B^\perp)^\perp$.
+
+The map $B^{\perp} \rightarrow \widehat{A/B}$ sending $\chi \mapsto \tilde \chi$ where $\tilde \chi(xB) := \chi(x)$, is a bijection through basic arguments. If $\chi_i \rightarrow \chi$ uniformly on compact subsets of $A$ then by remark 1.5.2 every compact subset $C \subseteq A/B$ can be written as $\pi(K) = C$ for some compact $K \subseteq A$. This means that since $$\sup\limits_{c \in C} |\tilde\chi_i(c) - \tilde\chi(c)| = \sup\limits_{k \in K} |\chi_i(k) - \chi(k)|$$ that $\tilde \chi_i \rightarrow \tilde \chi$ uniformly on all compact $C \subseteq A/B$.
+
+\vspace{0.3cm}
+
+And if $\tilde \chi_i \rightarrow \tilde \chi \in B^\perp$ locally uniformly on $A/B$ then if $y \in A$ and $U \subseteq A/B$ is a neighborhood of $yB$ on which $\tilde \chi_i \rightarrow \tilde \chi$ uniformly  then $\chi_i \rightarrow \chi$ uniformly on $\pi^{-1}(U)$ which contains $y$, so $\chi_i \rightarrow \chi$ locally uniformly and thus $\chi \longleftrightarrow \tilde \chi$ is continuous in both directions.
+
+\vspace{0.3cm}
+
+Proving that $\widehat A/B^\perp \approx \widehat B$ would be equivalent to proving that $\widehat{\widehat A/B^\perp} \approx B$, we know $\widehat{\widehat A/B^\perp}\approx (B^\perp)^\perp \subseteq \widehat{\widehat A}$ by the above argument which means $\widehat{\widehat A/B^\perp}\approx B$ and thus $\widehat A/B^\perp \approx \widehat B$, let's now check that this isomorphism is the map given by $\widehat A/B^\perp \rightarrow \widehat B:\chi + B^\perp \mapsto \chi|_B$.
+
+\vspace{0.3cm}
+Let $C \subseteq D$ be two LCA groups. $C^\perp \rightarrow \widehat{D/C}:\chi \mapsto (d + C \mapsto \chi(d))$ is the isomorphism from before. And thus we have an isomorphism
+$$\phi' : (B^\perp)^\perp \rightarrow \widehat{\widehat A/B^\perp}: \eta \mapsto (\chi + B^\perp \mapsto \eta(\chi))$$ 
+where $\eta \in (B^\perp)^\perp \subseteq \widehat{\widehat A}$ and under the isomorphism $\delta : B \rightarrow (B^\perp)^\perp$ this $\phi'$ becomes $\phi : B \rightarrow \widehat{\widehat A/B^\perp} : b \mapsto (\chi + B^{\perp} \mapsto \chi(b))$. 
+
+If we let $\delta : \widehat A/B^\perp \rightarrow \widehat{\widehat{\widehat A/B^\perp}}$ we need to investiage the isomorphism given by
+
+$$\widehat \phi \circ \delta: \widehat A/B^\perp \rightarrow \widehat B$$
+Specifically we need to prove that $((\widehat \phi \circ \delta)(\chi+ B^\perp))(b) = \chi(b)$, this is easy enough after chasing definitions and scratching your head for a prolonged period of time. We get 
+$$\widehat \phi(\delta(\chi+ B^\perp))(b) = \delta(\chi+ B^\perp)(\phi(b)) = \phi(b)(\chi + B^\perp) = \chi(b)$$ so that indeed $\widehat \phi \circ \delta$ is the restriction map.
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.11}
+
+\vspace{0.5cm}
+
+$\widehat \phi$ is clearly a group homomorphism and it's continuous since if $\chi_i \rightarrow \chi$ uniformly on compact subsets of $A$, then if $K \subseteq B$ is a compact set $\phi(K) \subseteq A$ is a compact set so then $\chi_i \circ \phi \rightarrow \chi \circ \phi$ uniformly on $K$ since
+
+$$ \sup\limits_{x \in K} |\chi(\phi(x)) -  \chi_i(\phi(x))| = \sup\limits_{y \in \phi(K)} |\chi(y) -  \chi_i(y)|$$
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.12}
+
+\vspace{0.5cm}
+
+We have the following commutative diagram, the two $\approx$ vertical arrows are given by Exercise 3.10 and the diagram commutes by exercise 3.10, the lower sequence is exact by definition.
+
+\begin{tikzcd}
+1 \arrow[r] & \widehat{A/B} \arrow[r]                & \widehat A \arrow[r]                 & \widehat B \arrow[r]                               & 1 \\
+1 \arrow[r] & B^\perp \arrow[u, "\approx"] \arrow[r] & \widehat A \arrow[u, "id"] \arrow[r] & \widehat A/B^\perp \arrow[u, "\approx"'] \arrow[r] & 1
+\end{tikzcd}
+
+\vspace{0.5cm}
+
+\textbf{Exercise 3.22}
+
+\vspace{0.5cm}
+
+If $A$ is compact monothetic then $\langle a \rangle = \{..., a^{-2}, a^{-1}, 1, a^1, a^2,... \}$ is dense in $A$. This means that characters on $A$ that agree on $a$ agree on the whole of $A$. I.e $\delta_a : \widehat A \rightarrow \mathbb T$ is an injective function. And since $\widehat A$ is discrete if we give the image $ D =\delta_a(\widehat A)$ the discrete topology then $\delta_a : \widehat A \rightarrow D \subseteq \mathbb T_d$ is a bijection and thus a homeomorphism since both spaces are discrete, $\widehat A \approx D \subseteq \mathbb T_d$, this was the forward direction.
+
+\vspace{0.3cm}
+
+Now for the reverse direction, if $\widehat{A} \approx D \subseteq \mathbb T_d$ is a subgroup then we want to prove that $\widehat D \approx A$ is monothetic. First, by exercise 3.10 the restriction map $\phi:\widehat{\mathbb T_d} \rightarrow \widehat{D}, \chi \mapsto \chi|_D$ is surjective. Then if we prove that $\widehat{\mathbb T_d}$ is monothetic it would imply that $\widehat D = \phi(\widehat{\mathbb T_d}) =\phi( \ \overline{\langle f \rangle} \ ) \subseteq \overline{\phi( {\langle f \rangle} )} = \overline{\langle\phi(f)\rangle}$, i.e $\widehat D \subseteq \overline{\langle f|_D \rangle}$ and $\widehat D$ would be monothetic.
+
+\vspace{0.3cm}
+
+So then following the same rough idea as exercise 3.3 let $f = id: \mathbb T_d \rightarrow \mathbb T$ be the identity map and assume for contradiction that $F =\overline{\langle f\rangle}$ is properly contained in $\widehat{\mathbb T_d}$, then there is some nontrivial character $\delta_\lambda$ ($1 \neq \lambda \in \mathbb T_d$) on $\widehat{\mathbb T_d}$ that is trivial on $F$. This would imply $\delta_\lambda(f) =f(\lambda) = 1$ and $\lambda = 1$, contradiction. So $\widehat{\mathbb T_d}$ is monothetic with generator $f$ and theorem is proven.
+
+\end{document}
